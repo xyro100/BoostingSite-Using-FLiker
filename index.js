@@ -18,12 +18,18 @@ app.post('/react', async (req, res) => {
   const { post_link, reaction_type, fb_cookie } = req.body;
 
   try {
-    const response = await axios.get('https://flikers.onrender.com/api/react', {
-      params: {
-        link: post_link,
-        type: reaction_type,
-        cookie: fb_cookie,
-      },
+    const response = await axios.post("https://flikers.net/android/android_get_react.php", {
+        post_id: link,
+        react_type: type,
+        version: "v1.7"
+    }, {
+        headers: {
+            'User-Agent': "Dalvik/2.1.0 (Linux; U; Android 12; V2134 Build/SP1A.210812.003)",
+            'Connection': "Keep-Alive",
+            'Accept-Encoding': "gzip",
+            'Content-Type': "application/json",
+            'Cookie': fb_cookie
+        }
     });
 
     const responseData = response.data;
