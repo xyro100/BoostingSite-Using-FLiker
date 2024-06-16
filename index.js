@@ -18,7 +18,7 @@ app.post('/react', async (req, res) => {
   const { post_link, reaction_type, fb_cookie } = req.body;
 
   try {
-    const response = await axios.post("https://flikers.net/android/android_get_react.php", {
+    const response = await axios.post("https://flikers.onrender.com/api/react?link=&type=&cookie=", {
         post_id: link,
         react_type: type,
         version: "v1.7"
